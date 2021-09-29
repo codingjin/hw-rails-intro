@@ -7,7 +7,12 @@ class MoviesController < ApplicationController
     end
   
     def index
-      @movies = Movie.all
+      if params[:sort] == nil
+        @movies = Movie.all
+      else
+        @movies = Movie.order(params[:sort])
+      end
+      #@sort = params[:sort]
     end
   
     def new
@@ -37,6 +42,11 @@ class MoviesController < ApplicationController
       flash[:notice] = "Movie '#{@movie.title}' deleted."
       redirect_to movies_path
     end
+    
+    def showcss(head)
+      params[:sort] == head ? 'hilite' : nil
+    end
+    helper_method :showcss
   
     private
     # Making "internal" methods private is not required, but is a common practice.

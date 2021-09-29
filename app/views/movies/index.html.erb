@@ -6,9 +6,14 @@
 <table class="table table-striped col-md-12" id="movies">
   <thead>
     <tr>
-      <th>Movie Title</th>
+      <th class="<%= showcss('title')  %>">
+        <a id="title_header"><%= link_to "Movie Title", :sort=>"title" %></a>
+      </th>
       <th>Rating</th>
-      <th>Release Date</th>
+      <!-- <th>Release Date</th> -->
+      <th class="<%= showcss('release_date')  %>">
+        <a id="release_date_header"><%= link_to "Release Date", :sort=>"release_date" %></a>
+      </th>
       <th>More Info</th>
     </tr>
   </thead>
