@@ -7,10 +7,32 @@ class MoviesController < ApplicationController
     end
   
     def index
-      
+
       @all_ratings = Movie.ratings
-      @sort = params[:sort]
-      @ratings_checked = params[:ratings]
+      
+      if params.has_key?(:sort)==false && params.has_key?(:ratings)==false
+        if session.has_key?(:sort) || session.has_key?(:ratings)
+          redirect_to movies_path(:sort=>session[:sort], :ratings=>session[:ratings])
+        end
+      end
+      
+      
+      if params.has_key?(:sort)
+        @sort = params[:sort]
+        session[:sort] = @sort
+      else
+        @sort = session[:sort]
+      end
+      
+      if params.has_key?(:commit) || params.has_key?(:ratings)
+        @ratings_checked = params[:ratings]
+        session[:ratings] = params[:ratings]
+      #elsif params.has_key?(:ratings)
+      #  @ratings_checked = params[:ratings]
+      #  session[:ratings] = params[:ratings]
+      else
+        @ratings_checked = session[:ratings]
+      end
       
       if @sort == nil
         if @ratings_checked == nil
@@ -26,10 +48,6 @@ class MoviesController < ApplicationController
         end
       end
       
-      
-
-      
-      #@sort = params[:sort]
     end
   
     def new
