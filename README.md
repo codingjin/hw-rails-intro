@@ -1,4 +1,4 @@
-#Notice:
+# Notice:
 This is the version of my HW to run on Cloud 9 platform.
 
 For the Heroku version, just replace Gemfile and config/database.yml with Gemfile.heroku and config.database.yml.heroku relatively.
