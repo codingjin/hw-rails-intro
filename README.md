@@ -1,3 +1,12 @@
+#Notice:
+This is the version of my HW to run on Cloud 9 platform.
+
+For the Heroku version, just replace Gemfile and config/database.yml with Gemfile.heroku and config.database.yml.heroku relatively.
+
+Want back to Cloud 9 platform? Use Gemfile.bak and config/database.yml.bak then.
+
+
+
 # RottenPotatoes demo app: getting started
 
 This app is associated with the [online
